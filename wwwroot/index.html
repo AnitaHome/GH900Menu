@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GH-900 Microsoft Learn 訓練連結導覽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .module-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .unit-link:hover {
+            background-color: #eff6ff;
+            color: #2563eb;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-slate-900 text-white py-8 px-4 shadow-lg mb-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+                <i class="fab fa-github mr-3"></i>GH-900 Microsoft Learn 訓練連結
+            </h1>
+            <p class="text-slate-400 max-w-2xl mx-auto">
+                快速瀏覽 GitHub Fundamentals 認證課程的所有 Module 與單元連結。點擊卡片標題進入章節，點擊清單進入特定單元。
+            </p>
+        </div>
+    </header>
+
+    <!-- Controls -->
+    <div class="max-w-7xl mx-auto px-4 mb-8">
+        <div class="flex flex-col md:flex-row gap-4 items-center justify-between bg-white p-4 rounded-xl shadow-sm">
+            <div class="relative w-full md:w-96">
+                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                    <i class="fas fa-search"></i>
+                </span>
+                <input type="text" id="searchInput" 
+                    placeholder="搜尋 Module 或單元關鍵字..." 
+                    class="block w-full pl-10 pr-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+            <div class="text-slate-500 text-sm italic">
+                共有 <span id="moduleCount" class="font-bold text-blue-600">0</span> 個模組
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid Layout -->
+    <main class="max-w-7xl mx-auto px-4 pb-20">
+        <div id="moduleGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards will be generated here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+            GH-900 Certification Preparation Dashboard &bull; Microsoft Learn Reference
+        </div>
+    </footer>
+</div>
+
+<script>
+    const courseData = [
+        {
+            id: 1,
+            title: "Module 1: Introduction to Git",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/intro-to-git/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/intro-to-git/0-introduction" },
+                { name: "2. What is version control?", url: "https://learn.microsoft.com/en-us/training/modules/intro-to-git/1-what-is-vc" },
+                { name: "3. Exercise - Try out Git", url: "https://learn.microsoft.com/en-us/training/modules/intro-to-git/2-exercise-configure-git" },
+                { name: "4. Basic Git commands", url: "https://learn.microsoft.com/en-us/training/modules/intro-to-git/3-basic-git-commands" },
+                { name: "5. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/intro-to-git/4-knowledge-check" },
+                { name: "6. Summary", url: "https://learn.microsoft.com/en-us/training/modules/intro-to-git/5-summary" }
+            ]
+        },
+        {
+            id: 2,
+            title: "Module 2: Introduction to GitHub",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github/1-introduction" },
+                { name: "2. What is GitHub?", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github/2-what-is-github" },
+                { name: "3. Components of the GitHub flow", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github/3-components-of-github-flow" },
+                { name: "4. GitHub is a collaborative platform", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github/4-collaborative-platform" },
+                { name: "5. GitHub platform management", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github/5-platform-management" },
+                { name: "6. Exercise - A guided tour of GitHub", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github/6-guided-tour-of-github" },
+                { name: "7. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github/7-knowledge-check" },
+                { name: "8. Summary", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github/8-summary" }
+            ]
+        },
+        {
+            id: 3,
+            title: "Module 3: Introduction to GitHub's products",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/github-introduction-products/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-products/1-introduction" },
+                { name: "2. GitHub accounts and plans", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-products/2-what-are-github-products" },
+                { name: "3. GitHub Mobile and GitHub Desktop", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-products/3-mobile-versus-desktop" },
+                { name: "4. GitHub billing", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-products/4-github-billing" },
+                { name: "5. License Usage Stats", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-products/5-license-usage-stats" },
+                { name: "6. License Usage Stats in Machine", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-products/6-license-usage-machine" },
+                { name: "7. Metered Usage Reports", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-products/7-metered-usage-consumption-reports" },
+                { name: "8. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-products/8-knowledge-check" },
+                { name: "9. Summary", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-products/9-summary" }
+            ]
+        },
+        {
+            id: 4,
+            title: "Module 4: Configure code scanning on GitHub",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/configure-code-scanning/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/configure-code-scanning/1-introduction" },
+                { name: "2. What is code scanning?", url: "https://learn.microsoft.com/en-us/training/modules/configure-code-scanning/2-what-code-scanning" },
+                { name: "3. Enable code scanning with third party", url: "https://learn.microsoft.com/en-us/training/modules/configure-code-scanning/3-enable-code-scanning-with-third-party-tools" },
+                { name: "4. Configure code scanning", url: "https://learn.microsoft.com/en-us/training/modules/configure-code-scanning/4-configure-code-scanning" },
+                { name: "5. Exercise - Configure code scanning", url: "https://learn.microsoft.com/en-us/training/modules/configure-code-scanning/5-exercise" },
+                { name: "6. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/configure-code-scanning/6-knowledge-check" },
+                { name: "7. Summary", url: "https://learn.microsoft.com/en-us/training/modules/configure-code-scanning/7-summary" }
+            ]
+        },
+        {
+            id: 5,
+            title: "Module 5: Introduction to GitHub Copilot",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github-copilot/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github-copilot/1-introduction" },
+                { name: "2. GitHub Copilot, your AI pair programmer", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github-copilot/2-github-copilot-your-ai-pair-programmer" },
+                { name: "3. Interact with Copilot", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github-copilot/3-interacting-with-copilot" },
+                { name: "4. Set up and troubleshoot Copilot", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github-copilot/4-setup-configure-troubleshoot" },
+                { name: "5. Exercise - Develop with Copilot", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github-copilot/5-exercise" },
+                { name: "6. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github-copilot/6-knowledge-check" },
+                { name: "7. Summary", url: "https://learn.microsoft.com/en-us/training/modules/introduction-to-github-copilot/7-summary" }
+            ]
+        },
+        {
+            id: 6,
+            title: "Module 6: Code with GitHub Codespaces",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/code-with-github-codespaces/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/code-with-github-codespaces/1-introduction" },
+                { name: "2. The Codespace lifecycle", url: "https://learn.microsoft.com/en-us/training/modules/code-with-github-codespaces/2-codespace-lifecycle" },
+                { name: "3. Personalize your Codespace", url: "https://learn.microsoft.com/en-us/training/modules/code-with-github-codespaces/3-personalize-codespace" },
+                { name: "4. Codespaces vs GitHub.dev", url: "https://learn.microsoft.com/en-us/training/modules/code-with-github-codespaces/4-codespaces-versus-github-dev-editor" },
+                { name: "5. Exercise - Code with Codespaces", url: "https://learn.microsoft.com/en-us/training/modules/code-with-github-codespaces/5-exercise-code-with-codespaces" },
+                { name: "6. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/code-with-github-codespaces/6-knowledge-check" },
+                { name: "7. Summary", url: "https://learn.microsoft.com/en-us/training/modules/code-with-github-codespaces/7-summary" }
+            ]
+        },
+        {
+            id: 7,
+            title: "Module 7: Manage your work with GitHub Projects",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/manage-work-github-projects/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/manage-work-github-projects/1-introduction" },
+                { name: "2. Projects vs Projects Classic", url: "https://learn.microsoft.com/en-us/training/modules/manage-work-github-projects/2-project-vs-project-classic" },
+                { name: "3. How to create a project", url: "https://learn.microsoft.com/en-us/training/modules/manage-work-github-projects/3-how-to-create-project" },
+                { name: "4. How to organize your project", url: "https://learn.microsoft.com/en-us/training/modules/manage-work-github-projects/4-how-to-organize-your-project" },
+                { name: "5. Organize and automate project", url: "https://learn.microsoft.com/en-us/training/modules/manage-work-github-projects/5-how-to-organize-automate-project" },
+                { name: "6. Insight and automation", url: "https://learn.microsoft.com/en-us/training/modules/manage-work-github-projects/6-insight-automation-with-projects" },
+                { name: "7. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/manage-work-github-projects/7-knowledge-check" },
+                { name: "8. Summary", url: "https://learn.microsoft.com/en-us/training/modules/manage-work-github-projects/8-summary" }
+            ]
+        },
+        {
+            id: 8,
+            title: "Module 8: Communicate using Markdown",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/communicate-using-markdown/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/communicate-using-markdown/1-introduction" },
+                { name: "2. What is Markdown?", url: "https://learn.microsoft.com/en-us/training/modules/communicate-using-markdown/2-what-is-markdown" },
+                { name: "3. Exercise - Use Markdown", url: "https://learn.microsoft.com/en-us/training/modules/communicate-using-markdown/3-communicating-using-markdown" },
+                { name: "4. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/communicate-using-markdown/4-knowledge-check" },
+                { name: "5. Summary", url: "https://learn.microsoft.com/en-us/training/modules/communicate-using-markdown/5-summary" }
+            ]
+        },
+        {
+            id: 9,
+            title: "Module 9: Contribute to open-source project",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/contribute-open-source/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/contribute-open-source/1-introduction" },
+                { name: "2. Identify where you can help", url: "https://learn.microsoft.com/en-us/training/modules/contribute-open-source/2-identify" },
+                { name: "3. Contribute to a repository", url: "https://learn.microsoft.com/en-us/training/modules/contribute-open-source/3-contribute" },
+                { name: "4. Exercise - Create first Pull Request", url: "https://learn.microsoft.com/en-us/training/modules/contribute-open-source/4-exercise-create-pr" },
+                { name: "5. Next steps", url: "https://learn.microsoft.com/en-us/training/modules/contribute-open-source/5-next-steps" },
+                { name: "6. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/contribute-open-source/6-knowledge-check" },
+                { name: "7. Summary", url: "https://learn.microsoft.com/en-us/training/modules/contribute-open-source/7-summary" }
+            ]
+        },
+        {
+            id: 10,
+            title: "Module 10: Manage an InnerSource program",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/manage-innersource-program-github/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/manage-innersource-program-github/1-introduction" },
+                { name: "2. Manage successful InnerSource", url: "https://learn.microsoft.com/en-us/training/modules/manage-innersource-program-github/2-manage-innersource-program" },
+                { name: "3. Exercise - InnerSource fundamentals", url: "https://learn.microsoft.com/en-us/training/modules/manage-innersource-program-github/3-innersource-fundamentals" },
+                { name: "4. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/manage-innersource-program-github/4-knowledge-check" },
+                { name: "5. Summary", url: "https://learn.microsoft.com/en-us/training/modules/manage-innersource-program-github/5-summary" }
+            ]
+        },
+        {
+            id: 11,
+            title: "Module 11: Maintain a secure repository",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/maintain-secure-repository-github/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/maintain-secure-repository-github/1-introduction" },
+                { name: "2. How to maintain secure repo", url: "https://learn.microsoft.com/en-us/training/modules/maintain-secure-repository-github/2-how-to-maintain-secure-repository" },
+                { name: "3. Automated security", url: "https://learn.microsoft.com/en-us/training/modules/maintain-secure-repository-github/3-security-automation" },
+                { name: "4. Exercise - Secure supply chain", url: "https://learn.microsoft.com/en-us/training/modules/maintain-secure-repository-github/3-security-strategy-essentials" },
+                { name: "5. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/maintain-secure-repository-github/4-knowledge-check" },
+                { name: "6. Summary", url: "https://learn.microsoft.com/en-us/training/modules/maintain-secure-repository-github/5-summary" }
+            ]
+        },
+        {
+            id: 12,
+            title: "Module 12: Introduction to Administration",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/github-introduction-administration/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-administration/1-introduction" },
+                { name: "2. What is administration?", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-administration/2-what-is-github-administration" },
+                { name: "3. Authentication mechanism", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-administration/3-how-github-authentication-works" },
+                { name: "4. Organizations and permissions", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-administration/4-how-github-organization-permission-works" },
+                { name: "5. Enterprise access and governance", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-administration/5-enterprise-access-governance" },
+                { name: "6. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-administration/knowledge-check" },
+                { name: "7. Summary", url: "https://learn.microsoft.com/en-us/training/modules/github-introduction-administration/6-summary" }
+            ]
+        },
+        {
+            id: 13,
+            title: "Module 13: Authenticate and authorize identities",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/authenticate-authorize-user-identities-github/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/authenticate-authorize-user-identities-github/1-introduction" },
+                { name: "2. Identity & Access management", url: "https://learn.microsoft.com/en-us/training/modules/authenticate-authorize-user-identities-github/2-user-identity-access-management" },
+                { name: "3. User authentication", url: "https://learn.microsoft.com/en-us/training/modules/authenticate-authorize-user-identities-github/3-authentication" },
+                { name: "4. User authorization", url: "https://learn.microsoft.com/en-us/training/modules/authenticate-authorize-user-identities-github/4-authorization" },
+                { name: "5. Team synchronization", url: "https://learn.microsoft.com/en-us/training/modules/authenticate-authorize-user-identities-github/5-team-synchronization" },
+                { name: "6. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/authenticate-authorize-user-identities-github/6-knowledge-check" },
+                { name: "7. Summary", url: "https://learn.microsoft.com/en-us/training/modules/authenticate-authorize-user-identities-github/7-summary" }
+            ]
+        },
+        {
+            id: 14,
+            title: "Module 14: Manage changes by Pull Requests",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/manage-changes-pull-requests-github/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/manage-changes-pull-requests-github/1-introduction" },
+                { name: "2. What are Pull Requests?", url: "https://learn.microsoft.com/en-us/training/modules/manage-changes-pull-requests-github/2-what-are-pull-requests" },
+                { name: "3. Exercise - Reviewing PRs", url: "https://learn.microsoft.com/en-us/training/modules/manage-changes-pull-requests-github/3-review-pull-requests" },
+                { name: "4. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/manage-changes-pull-requests-github/4-knowledge-check" },
+                { name: "5. Summary", url: "https://learn.microsoft.com/en-us/training/modules/manage-changes-pull-requests-github/5-summary" }
+            ]
+        },
+        {
+            id: 15,
+            title: "Module 15: Search and organize history",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/search-organize-repository-history-github/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/search-organize-repository-history-github/1-introduction" },
+                { name: "2. How to search repo history", url: "https://learn.microsoft.com/en-us/training/modules/search-organize-repository-history-github/2-search-organize-repository-history-github" },
+                { name: "3. Exercise - Connect the dots", url: "https://learn.microsoft.com/en-us/training/modules/search-organize-repository-history-github/3-connect-dots" },
+                { name: "4. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/search-organize-repository-history-github/4-knowledge-check" },
+                { name: "5. Summary", url: "https://learn.microsoft.com/en-us/training/modules/search-organize-repository-history-github/5-summary" }
+            ]
+        },
+        {
+            id: 16,
+            title: "Module 16: GitHub Copilot with Python",
+            mainLink: "https://learn.microsoft.com/en-us/training/modules/introduction-copilot-python/",
+            units: [
+                { name: "1. Introduction", url: "https://learn.microsoft.com/en-us/training/modules/introduction-copilot-python/1-introduction" },
+                { name: "2. What is GitHub Copilot?", url: "https://learn.microsoft.com/en-us/training/modules/introduction-copilot-python/2-what-is-github-copilot" },
+                { name: "3. Exercise - Setup VS Code", url: "https://learn.microsoft.com/en-us/training/modules/introduction-copilot-python/3-exercise-setup" },
+                { name: "4. Use Copilot with Python", url: "https://learn.microsoft.com/en-us/training/modules/introduction-copilot-python/4-use-copilot-with-python" },
+                { name: "5. Exercise - Update Web API", url: "https://learn.microsoft.com/en-us/training/modules/introduction-copilot-python/5-exercise-python-web-api" },
+                { name: "6. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/introduction-copilot-python/6-knowledge-check" },
+                { name: "7. Summary", url: "https://learn.microsoft.com/en-us/training/modules/introduction-copilot-python/7-summary" }
+            ]
+        }
+    ];
+
+    const moduleGrid = document.getElementById('moduleGrid');
+    const searchInput = document.getElementById('searchInput');
+    const moduleCount = document.getElementById('moduleCount');
+
+    function getUnitBadge(name) {
+        if (name.toLowerCase().includes('exercise')) {
+            return '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 ml-2 uppercase">Exercise</span>';
+        }
+        if (name.toLowerCase().includes('assessment') || name.toLowerCase().includes('check')) {
+            return '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-700 ml-2 uppercase">Quiz</span>';
+        }
+        return '';
+    }
+
+    function renderModules(filterText = '') {
+        moduleGrid.innerHTML = '';
+        const filtered = courseData.filter(m => 
+            m.title.toLowerCase().includes(filterText.toLowerCase()) || 
+            m.units.some(u => u.name.toLowerCase().includes(filterText.toLowerCase()))
+        );
+
+        moduleCount.innerText = filtered.length;
+
+        filtered.forEach(module => {
+            const card = document.createElement('div');
+            card.className = 'module-card bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col';
+            
+            let unitsHtml = module.units.map(unit => `
+                <li>
+                    <a href="${unit.url}" target="_blank" class="unit-link block px-4 py-2.5 text-sm text-slate-600 border-b border-slate-50 last:border-0 transition-colors flex items-center justify-between">
+                        <span>${unit.name}</span>
+                        <div class="flex items-center">
+                            ${getUnitBadge(unit.name)}
+                            <i class="fas fa-chevron-right text-[10px] text-slate-300 ml-2"></i>
+                        </div>
+                    </a>
+                </li>
+            `).join('');
+
+            card.innerHTML = `
+                <div class="bg-gradient-to-r from-blue-600 to-indigo-700 p-5">
+                    <div class="flex items-start justify-between">
+                        <h2 class="text-white font-bold text-lg leading-snug">
+                            <a href="${module.mainLink}" target="_blank" class="hover:underline">
+                                ${module.title}
+                            </a>
+                        </h2>
+                        <span class="bg-white/20 text-white text-[10px] px-2 py-1 rounded-full backdrop-blur-sm">
+                            ${module.units.length} Units
+                        </span>
+                    </div>
+                </div>
+                <div class="flex-grow">
+                    <ul class="divide-y divide-slate-50">
+                        ${unitsHtml}
+                    </ul>
+                </div>
+                <div class="bg-slate-50 p-3 border-t border-slate-100 mt-auto">
+                    <a href="${module.mainLink}" target="_blank" class="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center justify-center gap-1 uppercase tracking-wider">
+                        查看模組章節 <i class="fas fa-external-link-alt text-[10px]"></i>
+                    </a>
+                </div>
+            `;
+            moduleGrid.appendChild(card);
+        });
+
+        if (filtered.length === 0) {
+            moduleGrid.innerHTML = `
+                <div class="col-span-full py-20 text-center">
+                    <div class="text-slate-300 text-6xl mb-4"><i class="fas fa-ghost"></i></div>
+                    <p class="text-slate-500">找不到相符的課程或單元...</p>
+                </div>
+            `;
+        }
+    }
+
+    searchInput.addEventListener('input', (e) => {
+        renderModules(e.target.value);
+    });
+
+    // Initial render
+    renderModules();
+</script>
+
+</body>
+</html>
