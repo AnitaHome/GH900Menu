@@ -41,10 +41,11 @@
     <header class="bg-slate-900 text-white py-6 md:py-8 px-4 shadow-lg mb-6 md:mb-8">
         <div class="max-w-7xl mx-auto text-center">
             <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">
-                <i class="fab fa-github mr-2 md:mr-3"></i>GH-900 Microsoft Learn 訓練連結
+                <a href="https://github.com"><i class="fab fa-github mr-2 md:mr-3"></i></a>
+                GH-900 Microsoft Learn 訓練連結
             </h1>
             <p class="text-sm md:text-base text-slate-400 max-w-2xl mx-auto">
-                快速瀏覽 GitHub Fundamentals 認證課程的所有 Module 與單元連結。點擊卡片標題進入章節，點擊清單進入特定單元。
+                快速瀏覽 <a href="https://github.com">GitHub</a> Fundamentals 認證課程的所有 Module 與單元連結。點擊卡片標題進入章節，點擊清單進入特定單元。
             </p>
         </div>
     </header>
@@ -227,7 +228,8 @@
                 { name: "2. Manage successful InnerSource", url: "https://learn.microsoft.com/en-us/training/modules/manage-innersource-program-github/2-manage-innersource-program" },
                 { name: "3. Exercise - InnerSource fundamentals", url: "https://learn.microsoft.com/en-us/training/modules/manage-innersource-program-github/3-innersource-fundamentals" },
                 { name: "4. Module assessment", url: "https://learn.microsoft.com/en-us/training/modules/manage-innersource-program-github/4-knowledge-check" },
-                { name: "5. Summary", url: "https://learn.microsoft.com/en-us/training/modules/manage-innersource-program-github/5-summary" }
+                { name: "5. Summary", url: "https://learn.microsoft.com/en-us/training/modules/manage-innersource-program-github/5-summary" },
+                { name: "6. 自製練習步驟", url: "CH10LabsScript.html" }
             ]
         },
         {
@@ -372,6 +374,7 @@ function renderModules(filterText = '') {
                 <a href="${module.mainLink}" target="_blank" class="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center justify-center gap-1 uppercase tracking-wider">
                         查看模組章節 <i class="fas fa-external-link-alt text-[10px]"></i>
                     </a>
+                      <a href="https://github.com"><i class="fab fa-github mr-2 md:mr-3"></i></a>
                 </div>
             `;
             moduleGrid.appendChild(card);
