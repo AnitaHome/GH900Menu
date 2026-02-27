@@ -90,11 +90,11 @@ Global-UI 是 Global-Tech Solutions 的官方 UI 框架，旨在統一公司內�
    * 點擊 **Add file** \-\> **Create new file**，在檔名欄位輸入 .github/ 接著輸入 PULL\_REQUEST\_TEMPLATE.md (輸入斜線會自動轉換為資料夾)。  
    * 在該檔案內建立 PULL\_REQUEST\_TEMPLATE.md。
 ```
- **加入以下 Checklist**：  
- - [ ] 我已經閱讀了 CONTRIBUTING 指南。  
- - [ ] 我的代碼符合公司的 Lint 規範。  
- - [ ] 我已經手動測試過此功能。  
- - [ ] 相關的 Issue 編號：\#
+**加入以下 Checklist**：  
+- [ ] 我已經閱讀了 CONTRIBUTING 指南。  
+- [ ] 我的代碼符合公司的 Lint 規範。  
+- [ ] 我已經手動測試過此功能。  
+- [ ] 相關的 Issue 編號：\#
 ```
 ### **任務四：治理與產權管理 (Governance)**
 
