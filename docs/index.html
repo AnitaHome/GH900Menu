@@ -355,12 +355,12 @@ function renderModules(filterText = '') {
         card.innerHTML = `
             <div class="bg-gradient-to-r from-blue-600 to-indigo-700 p-4 md:p-5">
                 <div class="flex items-start justify-between gap-3">
-                    <h2 class="text-white font-bold text-base md:text-lg leading-snug flex-1 min-w-0 break-words">
-                     <a href="https://github.com" target="_blank"><i class="fab fa-github mr-2 md:mr-3"></i></a>
+                    <h2 class="text-white font-bold text-base md:text-lg leading-snug flex-1 min-w-0 break-words">                   
                         <a href="${module.mainLink}" target="_blank" class="hover:underline block">
                             ${module.title}
                         </a>
                     </h2>
+                      <a href="https://github.com" target="_blank"><i class="fab fa-github mr-2 md:mr-3"></i></a>
                     <span class="bg-white/20 text-white text-[10px] px-2 py-1 rounded-full backdrop-blur-sm whitespace-nowrap flex-shrink-0">
                         ${module.units.length} Units
                     </span>
