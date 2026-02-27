@@ -39,7 +39,7 @@ InnerSource 的核心 is 「透明」。如果別人找不到你的專案，就�
 2. **優化 README.md**：  
    * 點擊 README.md 的編輯按鈕 (鉛筆圖示)。  
    * **內容參考範例**： (完成後按下 Commit changes...)
-  ```
+```
      # Global-UI 組件庫
 
      ## 🚀 專案簡介  
@@ -62,7 +62,8 @@ InnerSource 的核心 is 「透明」。如果別人找不到你的專案，就�
 
 1. **建立 CONTRIBUTING.md**：  
    * 在根目錄建立 CONTRIBUTING.md，並貼入以下內容：
-     ``` 
+   
+``` 
      ## 如何貢獻  
      1. 尋找現有的 Issue 或建立新 Issue 討論你的想法。  
      2. Fork 本專案並建立功能分支。  
@@ -74,7 +75,7 @@ InnerSource 的核心 is 「透明」。如果別人找不到你的專案，就�
      * 如何提交新功能需求。  
      * 代碼風格 (Linting) 要求。  
      * 測試要求 (必須通過所有單元測試)。
-  ```
+```
 2. **建立 CODE\_OF\_CONDUCT.md**：  
    * 在 GitHub 點擊 Add file \-\> Create new file。  
    * 輸入檔案名 CODE\_OF\_CONDUCT.md。  
