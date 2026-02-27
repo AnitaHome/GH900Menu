@@ -39,6 +39,7 @@ InnerSource 的核心 is 「透明」。如果別人找不到你的專案，就�
 2. **優化 README.md**：  
    * 點擊 README.md 的編輯按鈕 (鉛筆圖示)。  
    * **內容參考範例**： (完成後按下 Commit changes...)
+
 ```
 # Global-UI 組件庫
 ## 🚀 專案簡介  
@@ -49,6 +50,7 @@ Global-UI 是 Global-Tech Solutions 的官方 UI 框架，旨在統一公司內�
 ## 🤝 InnerSource 聲明  
 本專案是 Global-Tech 的 **InnerSource 專案**。我們相信集體智慧！不論你是哪個部門的成員，只要你有好想法、發現 Bug 或想優化組件，我們都熱烈歡迎你提交 Pull Request 參與貢獻。
 ```
+
 3. **新增專案標籤 (Topics)**：  
    * 在 GitHub 儲存庫首頁右側的 "About" 區塊點擊齒輪圖示。  
    * 在 Topics 欄位分別輸入 innersource, ui-library, internal-tools (每輸入一個字詞後按 Enter)，完成後點擊 Save 儲存。這能幫助其他同仁透過關鍵字搜尋到此專案。
@@ -87,8 +89,9 @@ Global-UI 是 Global-Tech Solutions 的官方 UI 框架，旨在統一公司內�
    * 捲動到 Features 區塊，找到 Issues，點擊 Set up templates。  
    * 建立一個 "Bug report" 範本。  
 2. **Pull Request 範本**：  
-   * 點擊 **Add file** \-\> **Create new file**，在檔名欄位輸入 .github/ 接著輸入 PULL\_REQUEST\_TEMPLATE.md (輸入斜線會自動轉換為資料夾)。  
+   * 點擊 **Add file** \-\> **Create new file**，在檔名欄位輸入 `.github/` 接著輸入 `PULL\_REQUEST\_TEMPLATE.md` (輸入斜線會自動轉換為資料夾)。  
    * 在該檔案內建立 PULL\_REQUEST\_TEMPLATE.md。
+
 ```
 **加入以下 Checklist**：  
 - [ ] 我已經閱讀了 CONTRIBUTING 指南。  
@@ -96,12 +99,13 @@ Global-UI 是 Global-Tech Solutions 的官方 UI 框架，旨在統一公司內�
 - [ ] 我已經手動測試過此功能。  
 - [ ] 相關的 Issue 編號：\#
 ```
+
 ### **任務四：治理與產權管理 (Governance)**
 
 誰該對代碼負責？使用 CODEOWNERS 自動分派審核者。
 
 1. **建立 CODEOWNERS 檔案**：  
-   * 在 .github/ 資料夾下建立 CODEOWNERS。
+   * 在 `.github/` 資料夾下建立 `CODEOWNERS`。
 
 ```
 **內容參考範例**： (請將 @your-username 替換為你的 GitHub ID 後 Commit)
