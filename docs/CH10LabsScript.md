@@ -64,17 +64,17 @@ InnerSource 的核心 is 「透明」。如果別人找不到你的專案，就�
    * 在根目錄建立 CONTRIBUTING.md，並貼入以下內容：
    
 ``` 
-     ## 如何貢獻  
-     1. 尋找現有的 Issue 或建立新 Issue 討論你的想法。  
-     2. Fork 本專案並建立功能分支。  
-     3. 確保你的程式碼通過所有 Lint 檢查。  
-     4. 提交 PR 並等待維護者審核。
+## 如何貢獻  
+1. 尋找現有的 Issue 或建立新 Issue 討論你的想法。  
+2. Fork 本專案並建立功能分支。  
+3. 確保你的程式碼通過所有 Lint 檢查。  
+4. 提交 PR 並等待維護者審核。
 
-   * **定義內容**：  
-     * 如何報告 Bug。  
-     * 如何提交新功能需求。  
-     * 代碼風格 (Linting) 要求。  
-     * 測試要求 (必須通過所有單元測試)。
+**定義內容**：  
+* 如何報告 Bug。  
+* 如何提交新功能需求。  
+* 代碼風格 (Linting) 要求。  
+* 測試要求 (必須通過所有單元測試)。
 ```
 2. **建立 CODE\_OF\_CONDUCT.md**：  
    * 在 GitHub 點擊 Add file \-\> Create new file。  
@@ -106,11 +106,11 @@ InnerSource 的核心 is 「透明」。如果別人找不到你的專案，就�
    * 在 .github/ 資料夾下建立 CODEOWNERS。  
    * **內容參考範例**： (請將 @your-username 替換為你的 GitHub ID 後 Commit)
 ```
-     # 這是一個註解：將所有 JS 檔案交由你（前端負責人）審核  
-     *.js @your-username
+# 這是一個註解：將所有 JS 檔案交由你（前端負責人）審核  
+*.js @your-username
 
-     # 將所有文件夾 docs 下的內容交由你審核  
-     docs @your-username
+# 將所有文件夾 docs 下的內容交由你審核  
+docs @your-username
 ```
    * **設定規則解釋**：  
      * 將所有 JavaScript 檔案的審核權交給前端團隊。CODEOWNERS 規則會在 Pull Request 發起時自動指派審核者，這在 InnerSource 中是確保「治理」與代碼品質的重要機制。  
