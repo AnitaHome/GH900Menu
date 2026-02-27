@@ -104,19 +104,19 @@ InnerSource 的核心 is 「透明」。如果別人找不到你的專案，就�
 誰該對代碼負責？使用 CODEOWNERS 自動分派審核者。
 
 1. **建立 CODEOWNERS 檔案**：  
-   * 在 .github/ 資料夾下建立 CODEOWNERS。  
+   * 在 .github/ 資料夾下建立 CODEOWNERS。
+``` 
    * **內容參考範例**： (請將 @your-username 替換為你的 GitHub ID 後 Commit)
-```
-# 這是一個註解：將所有 JS 檔案交由你（前端負責人）審核  
-*.js @your-username
+   # 這是一個註解：將所有 JS 檔案交由你（前端負責人）審核  
+   *.js @your-username
 
-# 將所有文件夾 docs 下的內容交由你審核  
-docs @your-username
-```
+   # 將所有文件夾 docs 下的內容交由你審核  
+   docs @your-username
+
    * **設定規則解釋**：  
      * 將所有 JavaScript 檔案的審核權交給前端團隊。CODEOWNERS 規則會在 Pull Request 發起時自動指派審核者，這在 InnerSource 中是確保「治理」與代碼品質的重要機制。  
      * 範例：\*.js @your-username (請填寫你的 GitHub 使用者帳號)。
-
+```
 ## **5\. 模擬實戰測試 (The Final Test)**
 
 請嘗試以一個「貢獻者」的角度模擬以下行為：
