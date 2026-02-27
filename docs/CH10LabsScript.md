@@ -38,19 +38,20 @@ InnerSource 的核心 is 「透明」。如果別人找不到你的專案，就�
    * 點擊 **Create repository**。  
 2. **優化 README.md**：  
    * 點擊 README.md 的編輯按鈕 (鉛筆圖示)。  
-   * **內容參考範例**： (完成後按下 Commit changes...)  
-     \# Global-UI 組件庫
+   * **內容參考範例**： (完成後按下 Commit changes...)
+  ```
+     # Global-UI 組件庫
 
-     \#\# 🚀 專案簡介  
+     ## 🚀 專案簡介  
      Global-UI 是 Global-Tech Solutions 的官方 UI 框架，旨在統一公司內所有產品的視覺風格與交互經驗，減少重複開發。
 
-     \#\# 🛠 快速上手  
-     1\. 安裝套件：\`npm install global-ui\`  
-     2\. 啟動開發伺服器：\`npm start\`
+     ## 🛠 快速上手  
+     1. 安裝套件：`npm install global-ui`  
+     2. 啟動開發伺服器：`npm start`
 
-     \#\# 🤝 InnerSource 聲明  
-     本專案是 Global-Tech 的 \*\*InnerSource 專案\*\*。我們相信集體智慧！不論你是哪個部門的成員，只要你有好想法、發現 Bug 或想優化組件，我們都熱烈歡迎你提交 Pull Request 參與貢獻。
-
+     ## 🤝 InnerSource 聲明  
+     本專案是 Global-Tech 的 **InnerSource 專案**。我們相信集體智慧！不論你是哪個部門的成員，只要你有好想法、發現 Bug 或想優化組件，我們都熱烈歡迎你提交 Pull Request 參與貢獻。
+```
 3. **新增專案標籤 (Topics)**：  
    * 在 GitHub 儲存庫首頁右側的 "About" 區塊點擊齒輪圖示。  
    * 在 Topics 欄位分別輸入 innersource, ui-library, internal-tools (每輸入一個字詞後按 Enter)，完成後點擊 Save 儲存。這能幫助其他同仁透過關鍵字搜尋到此專案。
@@ -60,18 +61,20 @@ InnerSource 的核心 is 「透明」。如果別人找不到你的專案，就�
 為了讓外部團隊知道「如何」參與，你需要建立明確的文件。
 
 1. **建立 CONTRIBUTING.md**：  
-   * 在根目錄建立 CONTRIBUTING.md，並貼入以下內容：  
-     \#\# 如何貢獻  
-     1\. 尋找現有的 Issue 或建立新 Issue 討論你的想法。  
-     2\. Fork 本專案並建立功能分支。  
-     3\. 確保你的程式碼通過所有 Lint 檢查。  
-     4\. 提交 PR 並等待維護者審核。
+   * 在根目錄建立 CONTRIBUTING.md，並貼入以下內容：
+     ``` 
+     ## 如何貢獻  
+     1. 尋找現有的 Issue 或建立新 Issue 討論你的想法。  
+     2. Fork 本專案並建立功能分支。  
+     3. 確保你的程式碼通過所有 Lint 檢查。  
+     4. 提交 PR 並等待維護者審核。
 
    * **定義內容**：  
      * 如何報告 Bug。  
      * 如何提交新功能需求。  
      * 代碼風格 (Linting) 要求。  
-     * 測試要求 (必須通過所有單元測試)。  
+     * 測試要求 (必須通過所有單元測試)。
+  ```
 2. **建立 CODE\_OF\_CONDUCT.md**：  
    * 在 GitHub 點擊 Add file \-\> Create new file。  
    * 輸入檔案名 CODE\_OF\_CONDUCT.md。  
@@ -89,10 +92,10 @@ InnerSource 的核心 is 「透明」。如果別人找不到你的專案，就�
    * 點擊 **Add file** \-\> **Create new file**，在檔名欄位輸入 .github/ 接著輸入 PULL\_REQUEST\_TEMPLATE.md (輸入斜線會自動轉換為資料夾)。  
    * 在該檔案內建立 PULL\_REQUEST\_TEMPLATE.md。  
    * **加入以下 Checklist**：  
-     \- \[ \] 我已經閱讀了 CONTRIBUTING 指南。  
-     \- \[ \] 我的代碼符合公司的 Lint 規範。  
-     \- \[ \] 我已經手動測試過此功能。  
-     \- \[ \] 相關的 Issue 編號：\#
+     - [ ] 我已經閱讀了 CONTRIBUTING 指南。  
+     - [ ] 我的代碼符合公司的 Lint 規範。  
+     - [ ] 我已經手動測試過此功能。  
+     - [ ] 相關的 Issue 編號：\#
 
 ### **任務四：治理與產權管理 (Governance)**
 
@@ -100,13 +103,14 @@ InnerSource 的核心 is 「透明」。如果別人找不到你的專案，就�
 
 1. **建立 CODEOWNERS 檔案**：  
    * 在 .github/ 資料夾下建立 CODEOWNERS。  
-   * **內容參考範例**： (請將 @your-username 替換為你的 GitHub ID 後 Commit)  
-     \# 這是一個註解：將所有 JS 檔案交由你（前端負責人）審核  
-     \*.js @your-username
+   * **內容參考範例**： (請將 @your-username 替換為你的 GitHub ID 後 Commit)
+```
+     # 這是一個註解：將所有 JS 檔案交由你（前端負責人）審核  
+     *.js @your-username
 
-     \# 將所有文件夾 docs 下的內容交由你審核  
-     /docs/ @your-username
-
+     # 將所有文件夾 docs 下的內容交由你審核  
+     docs @your-username
+```
    * **設定規則解釋**：  
      * 將所有 JavaScript 檔案的審核權交給前端團隊。CODEOWNERS 規則會在 Pull Request 發起時自動指派審核者，這在 InnerSource 中是確保「治理」與代碼品質的重要機制。  
      * 範例：\*.js @your-username (請填寫你的 GitHub 使用者帳號)。
