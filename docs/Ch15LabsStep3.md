@@ -65,6 +65,7 @@ When you're looking at a commit on GitHub, you can see a lot of information. Fro
 > - resolves
 > - resolved
 > - resolve
+>   
 > 例如：Fixes #2、Resolves #2 等都可以。 
 
 
