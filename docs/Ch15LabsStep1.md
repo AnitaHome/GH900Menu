@@ -44,6 +44,7 @@ When you want to create a crosslink, start typing the title of an issue or pull 
 2. Type "Duplicate of #2" as a comment and close issue #1
 3. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
 
+<Button href="Ch15LabsStep2.html">Next Step</Button>
 <footer>
 
 <!--
