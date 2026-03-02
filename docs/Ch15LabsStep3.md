@@ -54,6 +54,7 @@ When you're looking at a commit on GitHub, you can see a lot of information. Fro
 10. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
 
 > (6) 'Closes #2' 將自動關閉 issue #2
+> 
 > 自動關閉 issue 的關鍵字除了 "Closes" 之外，還有:
 > - closes
 > - closed
