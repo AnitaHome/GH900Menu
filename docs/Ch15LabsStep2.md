@@ -47,7 +47,7 @@ A SHA is a reference to a specific object. In this case, it's a reference to a c
 6. Copy the first seven characters of the SHA (the first 7 characters of the 40 character hexadecimal string listed after `commit`)
 7. Comment on issue #2 by adding the SHA from step 6 as a comment text and click on "Comment" button
 8. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
-
+<a href="Ch15LabsStep3.html">Next Step</a>
 <footer>
 
 <!--
