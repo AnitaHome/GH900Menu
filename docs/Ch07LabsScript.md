@@ -1,4 +1,4 @@
-# **GitHub Projects 實戰練習：寵物認養平台 (PetAdopt) 開發案**
+# **Ch07 GitHub Projects 實戰練習：寵物認養平台 (PetAdopt) 開發案**
 
 本練習參考 Microsoft Learn 課程，旨在引導你從零開始建立、組織並自動化一個 GitHub 專案看板，模擬真實的開發工作流。
 
