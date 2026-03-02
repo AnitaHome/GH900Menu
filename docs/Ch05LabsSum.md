@@ -1,4 +1,4 @@
-# 🤖 GitHub Copilot Labs 摘要
+# Ch05 GitHub Copilot Labs 摘要 🤖
 
 本指南針對 `AnitaHome/skills-getting-started-with-github-copilot` 課程內容進行技術解構，旨在建立標準化的 AI 輔助開發 (AI-Assisted Development) 實務架構，優化編碼通量並確保代碼品質。
 
